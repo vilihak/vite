@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 1 - Chuck Norris vitsi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <button id="jokeButton">Get Joke</button>
+  <p id="jokeText"></p>
+
+  <script type="module" src="main.js"></script>
+  <script type="module">
+  import { getJoke } from './main.js';
+  document.getElementById('jokeButton').addEventListener('click', getJoke);
+  </script>
+</body>
+</html>
