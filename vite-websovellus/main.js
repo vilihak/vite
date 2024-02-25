@@ -1,12 +1,19 @@
 import './style.css';
-import './my-style.css';
+import javascriptLogo from './javascript.svg';
+import viteLogo from '/vite.svg';
+import { setupCounter } from './counter.js';
+import { showJoke } from './joke.js';
+import { showPics } from './catpics.js';
+import { showDiary } from './diary.js'; 
 
-export async function getJoke() {
-    try {
-      const response = await fetch('https://api.chucknorris.io/jokes/random');
-      const joke = await response.json();
-      document.getElementById('jokeText').textContent = joke.value;
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  }
+document.querySelector('#app').innerHTML = 'Moi täällä ollaan';
+
+let element = document.querySelector('.chuck');
+console.log(element);
+showJoke(element);
+showJoke(document.querySelector('.toinen'));
+
+const picsButton = document.querySelector('.pics');
+showPics(picsButton);
+
+showDiary(document.querySelector('.diary'));
