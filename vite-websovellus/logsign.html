@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>MetroHealthDiary</title>
+  </head>
+  <body>
+    <img class="logoimage" src="pic.png" alt="logo">
+    <div class="topnav">
+      <a href="logsign.html">Start</a>
+      <a href="diaries.html">Diaries</a>
+      <a href="account.html">Account</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    
+    <div class="navbar">
+      <form class="login_form_navbar">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <input type="submit" value="Submit" class="loginuser">
+      </form>
+      <a href="#" id="logoutBtn">Logout</a>
+    </div>
+    <div class="main-container">
+      <div class="welcometext">
+      <h1>Welcome to MetroHealthDiary</h1>
+    </div>
+      <div class="leftcontainer">
+      <p class="leftcontaineruppertext">Here you can keep track of your health and well-being. 
+         You can keep track of your sleep and write notes. Please sign up on the right or login to start using the service. 
+      </p>
+    </div>
+    <div class="rightcontainer">
+      <div class="signup-container">
+        <h2>Sign up</h2>
+        <form class="create_user_form">
+          <label for="username">Username</label>
+          <input type="text" name="username"/>
+          <label for="password">Password</label>
+          <input type="password" name="password"/>
+          <label for="email">Email</label>
+          <input type="email" name="email"/>
+          <input name="submit" type="submit" value="Submit" class="createuser" />
+        </form>
+      </div>
+    </div>
+    </div>
+    <footer> Copyright, Vili</footer>
+  </body>
+  <script type="module" src="/start-auth.js"></script>
+</html>

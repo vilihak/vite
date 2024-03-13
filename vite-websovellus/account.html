@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css" />
+    <title>MetroHealthDiary</title>
+  </head>
+  <body>
+    <img class="logoimage" src="pic.png" alt="logo">
+    <div class="topnav">
+      <a href="logsign.html">Start</a>
+      <a href="diaries.html">Diaries</a>
+      <a href="account.html">Account</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="navbar">
+      <form class="login_form_navbar">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <input type="submit" value="Submit" class="loginuser">
+      </form>
+      <a href="#" id="logoutBtn">Logout</a>
+    </div>
+    <h1>Your account information:</h1>
+    <div id="userDetails"></div>
+    <h2>Change Email</h2>
+    <form id="changeEmailForm">
+      <label for="username">Username:</label>
+      <input type="text" id="newUsername" name="username" required>
+      <label for="password">Password:</label>
+      <input type="password" id="newPassword" name="password" required>
+      <label for="newEmail">New Email:</label>
+      <input type="email" id="newEmail" name="newEmail" required>
+      <input type="submit" value="Change Email">
+    </form>
+  </body>
+</html>

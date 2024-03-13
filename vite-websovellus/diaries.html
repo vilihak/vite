@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>MetroHealthDiary</title>
+  </head>
+  <body>
+    <img class="logoimage" src="pic.png" alt="logo">
+    <div class="topnav">
+      <a href="logsign.html">Start</a>
+      <a href="diaries.html">Diaries</a>
+      <a href="account.html">Account</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    
+    <div class="navbar">
+      <form class="login_form_navbar">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <input type="submit" value="Submit" class="loginuser">
+      </form>
+      <a href="#" id="logoutBtn">Logout</a>
+    </div>
+
+    <div class="welcome"> Hello, xxx</div>
+
+    <div class="diariescontainer">
+      <div class="entrycontainer">
+        <div class="getEntries">
+          <h1>Diaries</h1>
+          <button id="loadEntriesButton">Load Entries</button>
+          <div id="entriesContainer"></div>
+        </div>
+      </div>
+
+      <div class="newdiary">
+        <h1>New Diary</h1>
+        <form class="new-diary-form">
+          <label for="mood">Mood:</label><br>
+          <input type="text" id="mood" name="mood"><br>
+          <label for="weight">Weight:</label><br>
+          <input type="number" id="weight" name="weight"><br>
+          <label for="sleep_hours">Sleep Hours:</label><br>
+          <input type="number" id="sleep_hours" name="sleep_hours"><br>
+          <label for="notes">Notes:</label><br>
+          <textarea id="notes" name="notes"></textarea><br>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+
+    <footer> Copyright, Vili</footer>
+    <script type="module" src="diary.js"></script>
+
+  </body>
+</html>
