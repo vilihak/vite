@@ -1,45 +1,14 @@
 import { fetchData } from './fetch.js';
 
-// ACCOUNT INFO ON SITE
-const getAccountInfo = async function () {
-  try {
-    const token = localStorage.getItem('token');
-    const username = localStorage.getItem('username'); 
-
-    if (!token || !username) {
-      console.error('Token or username not found in localStorage. User may not be logged in.');
-      return;
-    }
-
-    const accountInfo = await fetchData('http://localhost:3000/api/users', {
-      headers: {
-        Authorization: 'Bearer ' + token,
-      },
-    });
-
-    const user = accountInfo.find(u => u.username === username);
-    console.log(accountInfo);
-
-    if (user) {
-      document.querySelector('.usernameInfo').textContent = `Username: ${user.username}`;
-      document.querySelector('.emailInfo').textContent = `Email: ${user.email}`;
-      document.querySelector('.createdAtInfo').textContent = `Created At: ${user.created_at}`;
-    } else {
-      console.error(`Logged-in user with username '${username}' not found in the user data`);
-    }
-  } catch (error) {
-    console.error('Error fetching account information:', error.message);
-  }
-};
 
 // LOGIN USER
 const loginUser = document.querySelector('.loginuser');
-const token = localStorage.getItem('token');
+
 loginUser.addEventListener('click', async (evt) => {
   evt.preventDefault();
   console.log('Nyt logataan sisään');
 
-  const url = 'http://127.0.0.1:3000/api/auth/login';
+  const url = 'http://localhost:3000/api/auth/login';
 
   const form = document.querySelector('.login_form_navbar');
 
@@ -52,14 +21,15 @@ loginUser.addEventListener('click', async (evt) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + token,
     },
     body: JSON.stringify(data),
   };
 
   try {
     const response = await fetchData(url, options);
+    console.log(response);
     const jsonData = response;
+    console.log(jsonData);
     const token = jsonData?.token;
   
     if (!token) {
@@ -68,19 +38,49 @@ loginUser.addEventListener('click', async (evt) => {
       localStorage.setItem('token', token);
       localStorage.setItem('username', jsonData.user.username);
       console.log('loginResponse', `localStorage set with token value: ${token}`);
-      console.log('User Details:', jsonData.user); 
-
-      
-
-      // Create a new div element
-      const userDetailsDiv = document.createElement('div');
-      // Set its innerHTML to the user details, with line breaks
-      userDetailsDiv.innerHTML = `Username: ${jsonData.user.username}<br>Email: ${jsonData.user.email}<br>Created At: ${jsonData.user.created_at}`;
-
-      const userDetailsContainer = document.getElementById('userDetails');
-      userDetailsContainer.appendChild(userDetailsDiv);
-      alert('Login successful!');
+      alert('Login succesful!');
     }
+    } catch (error) {
+      console.error(error);
+    }
+    });
+
+
+// GET ACCOUNT DETAILS
+const getAccountDetailsBtn = document.getElementById('getAccountDetails');
+
+getAccountDetailsBtn.addEventListener('click', async () => {
+  const token = localStorage.getItem('token');
+
+  // Decode the token to get the user ID
+  const base64Url = token.split('.')[1];
+  const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  const payload = JSON.parse(window.atob(base64));
+  const userId = payload.user_id;
+
+  const url = `http://localhost:3000/api/users/${userId}`;
+
+  const options = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token,
+    },
+  };
+
+  try {
+    const response = await fetch(url, options);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const jsonData = await response.json();
+
+    const userDetailsDiv = document.createElement('div');
+    userDetailsDiv.innerHTML = `Username: ${jsonData.username}<br>Email: ${jsonData.email}<br>Created At: ${jsonData.created_at}`;
+
+    const userDetailsContainer = document.getElementById('userDetails');
+    userDetailsContainer.innerHTML = '';
+    userDetailsContainer.appendChild(userDetailsDiv);
   } catch (error) {
     console.error(error);
   }
@@ -132,9 +132,9 @@ const logoutBtn = document.getElementById("logoutBtn");
 logoutBtn.addEventListener("click", async (evt) => {
   evt.preventDefault();
   console.log('Nyt kirjaudutaan ulos');
+  alert('Logged out!');
   localStorage.removeItem('token');
   localStorage.removeItem('username');
 });
-
 
 

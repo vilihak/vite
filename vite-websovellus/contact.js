@@ -8,7 +8,7 @@ loginUser.addEventListener('click', async (evt) => {
   evt.preventDefault();
   console.log('Nyt logataan sisään');
 
-  const url = 'http://127.0.0.1:3000/api/auth/login';
+  const url = 'http://localhost:3000/api/auth/login';
 
   const form = document.querySelector('.login_form_navbar');
 
@@ -51,6 +51,7 @@ const logoutBtn = document.getElementById("logoutBtn");
 logoutBtn.addEventListener("click", async (evt) => {
   evt.preventDefault();
   console.log('Nyt kirjaudutaan ulos');
+  alert('Logged out!');
   localStorage.removeItem('token');
   localStorage.removeItem('username');
 });

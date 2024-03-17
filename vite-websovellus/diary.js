@@ -47,6 +47,7 @@ window.onload = function() {
 const logoutUser = async (evt) => {
   evt.preventDefault();
   console.log('Logging out');
+  alert('Logged out!');
   localStorage.removeItem('token');
   localStorage.removeItem('username');
 };
@@ -58,7 +59,7 @@ const loginUser = async (evt) => {
   evt.preventDefault();
   console.log('Logging in');
 
-  const url = 'http://127.0.0.1:3000/api/auth/login';
+  const url = 'http://localhost:3000/api/auth/login';
   const form = document.querySelector('.login_form_navbar');
 
   const data = {
