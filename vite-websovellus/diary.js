@@ -87,7 +87,7 @@ const loginUser = async (evt) => {
       localStorage.setItem('username', jsonData.user.username);
       console.log('loginResponse', `localStorage set with token value: ${token}`);
       alert('Login successful!');
-      location.reload(); // Add this line to reload the page
+      location.reload(); 
     }
   } catch (error) {
     console.error(error);
